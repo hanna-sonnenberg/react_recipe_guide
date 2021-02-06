@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Recipe from './Recipe';
 import './App.css';
 import './index.css';
 
@@ -6,11 +7,12 @@ import './index.css';
 
 const App = () => {
   // Authentification
-  const API_KEY = 'a043bd10eceb45ce8297913854a17649';
+  const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
+
+  const [recipes, setRecipe] = useState([]);
 
   // API Request example search recipes by ingredients
   // const exampleReq = 'https://api.spoonacular.com/recipes/findByIngredients?ingredients=apples,+flour,+sugar&number=2';
-
   useEffect(() => {
     // console.log('Effect has been run');
     // run the function getRecipes to fetch the data from the Api
@@ -26,7 +28,9 @@ const App = () => {
       if (response.ok) {
         const data = await response.json();
         // Code to execute with data
+        setRecipe(data);
         console.log(data);
+        return;
       }
       // handles response if unseccessful
       throw new Error('Request failed');
@@ -41,8 +45,11 @@ const App = () => {
         <input className="search-bar" type="text"/>
         <button className="search-button" type="submit">Search</button>
       </form>
+      {recipes.map(recipe =>(
+        < Recipe />
+      ))}
     </div>
-  )
-}
+  );
+};
 
 export default App;
