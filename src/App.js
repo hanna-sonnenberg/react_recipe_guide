@@ -52,9 +52,7 @@ const App = () => {
           // props to display data fetched from API in Recipe Component
           title = {recipe.title}
           image = {recipe.image}
-          ingredients = { recipe.missedIngredients.forEach(function(key) {
-            console.log(key.name);
-          }) }
+          ingredients = {recipe.missedIngredients}
         />
       ))}
     </div>
