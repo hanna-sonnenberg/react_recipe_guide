@@ -1,7 +1,7 @@
 import React from 'react';
 
 // component Recipe takes the props
-const Recipe = ({title, image, ingredients}) => {
+const Recipe = ({title, image, ingredients, url}) => {
    
     return(
         <div>
@@ -12,7 +12,8 @@ const Recipe = ({title, image, ingredients}) => {
             {ingredients.map(ingredient => (
                 <li key={ingredient.original}>{ingredient.original}</li>
               ))} 
-            </ul>          
+            </ul>
+            <a href={url}>Go to Recipe</a>        
         </div>
     )
 
