@@ -46,7 +46,16 @@ const App = () => {
         <button className="search-button" type="submit">Search</button>
       </form>
       {recipes.map(recipe =>(
-        < Recipe />
+        < Recipe 
+          // Solution to the error: Each child in a list should have a unique "key" prop.
+          key = {recipe.title}
+          // props to display data fetched from API in Recipe Component
+          title = {recipe.title}
+          image = {recipe.image}
+          ingredients = { recipe.missedIngredients.forEach(function(key) {
+            console.log(key.name);
+          }) }
+        />
       ))}
     </div>
   );

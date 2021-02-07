@@ -1,14 +1,14 @@
 import React from 'react';
 
-const Recipe = () => {
+// component Recipe takes the props
+const Recipe = ({title, image, ingredients}) => {
+   
     return(
         <div>
-            <h1>Title</h1>
-            <img src="" alt=""/>
-            <div>
-                <h5>Ingredients</h5>
-                <h5>Preparation</h5>
-            </div>
+            <h1>{title}</h1>
+            <img src={image} alt=""/>
+            <h5>Ingredients</h5>
+            <ul></ul>          
         </div>
     )
 
