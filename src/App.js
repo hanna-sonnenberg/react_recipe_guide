@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import Recipe from './Recipe';
+import Recipe from './Components/Recipe';
+import Navbar from './Components/Navbar';
 import './App.css';
 import './index.css';
 
@@ -27,7 +28,7 @@ const App = () => {
   const getRecipeInformation = async (recipeId) => {
     try {
       // sends request
-      const response = await fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY_TWO}&includeNutrition=false`);
+      const response = await fetch(`https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}&includeNutrition=false`);
       // handles response if successful
       if (response.ok) {
         const data = await response.json();
@@ -48,7 +49,7 @@ const App = () => {
     }
     try {
       // sends request
-      const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY_TWO}&ingredients=${query}`);
+      const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${query}`);
       // handles response if successful
       if (response.ok) {
         const data = await response.json();
@@ -90,10 +91,7 @@ const App = () => {
 
   return(
     <div className="App">
-      <form className = "search-form" onSubmit={getSearch}>
-        <input className="search-bar" type="text" value={search} onChange={updateSearch}/>
-        <button className="search-button" type="submit">Search</button>
-      </form>
+      <Navbar/>
       {recipes.map(recipe => {
         const url = recipeUrls[recipe.id];
         return (<Recipe 
