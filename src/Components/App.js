@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import Recipe from './Components/Recipe';
-import Navbar from './Components/Navbar';
+import Recipe from './Recipe';
+import Navbar from './Navbar';
 import './App.css';
-import './index.css';
+import '../index.css';
 
 // create App component
 
