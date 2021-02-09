@@ -1,13 +1,13 @@
 import React from 'react';
-import App from '../App';
-import '../App.css';
-import '../Navbar.css';
+import App from './App';
+import './App';
+import './Navbar.css';
 
 const Navbar = ({getSearch, search, updateSearch}) => {
     return(
         <div className="navbar">
             <div className="logo-side">
-                <h2>Recipe Guide</h2>
+                <h1 className="logo-text">Recipe Guide</h1>
             </div>
             <form className = "search-form" onSubmit={getSearch}>
                 <input className="search-bar" type="text" value={search} onChange={updateSearch} placeholder="Search by ingredients ..."/>
