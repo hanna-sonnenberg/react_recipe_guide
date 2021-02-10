@@ -5,3 +5,30 @@
   background-image: linear-gradient(to right, #243949 0%, #517fa4 100%);
 }
 
+.recipe-cards-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+}
+
+
+/* smallest device (phones)*/
+@media only screen and (min-width: 100px) and (max-width: 480px) {
+  .recipe-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Small devices (tablets/ portrait mode) */
+@media only screen and (min-width: 480px) and (max-width: 768px) {
+  .recipe-cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .recipe-cards-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
