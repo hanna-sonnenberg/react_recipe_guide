@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import Recipe from './Recipe';
 import Navbar from './Navbar';
+import findByIngredients from '../Mocks/findByIngredients';
+import informationBulk from '../Mocks/informationBulk';
 import './App.css';
 import '../index.css';
 
@@ -16,6 +19,11 @@ const api = axios.create({
     apiKey: API_KEY_TWO,
   }
 });
+
+const mock = new MockAdapter(api);
+mock.onGet("recipes/findByIngredients").reply(200, findByIngredients);
+mock.onGet("recipes/informationBulk").reply(200, informationBulk);
+
 
 // create App component
 
