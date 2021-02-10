@@ -1,16 +1,26 @@
 import React, {useEffect, useState} from 'react';
+import axios from 'axios';
+
 import Recipe from './Recipe';
 import Navbar from './Navbar';
 import './App.css';
 import '../index.css';
 
+const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
+const API_KEY_TWO = process.env.REACT_APP_SPOONACULAR_2_API_KEY;
+
+const api = axios.create({
+  baseURL: 'https://api.spoonacular.com/',
+  timeout: 1000,
+  params: {
+    apiKey: API_KEY_TWO,
+  }
+});
+
 // create App component
 
 const App = () => {
   // Authentification
-  const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
-  const API_KEY_TWO = process.env.REACT_APP_SPOONACULAR_2_API_KEY;
-
   // set states
   const [recipes, setRecipe] = useState([]);
   // create state for the search
@@ -27,16 +37,14 @@ const App = () => {
 
   const getRecipeInformationBulk = async (recipeIds) => {
     try {
-      // sends request
-      // https://api.spoonacular.com/recipes/informationBulk?ids=715538,716429
-      const response = await fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${API_KEY_TWO}&ids=${recipeIds}&includeNutrition=false`);
-      // handles response if successful
-      if (response.ok) {
-        const data = await response.json();
-        return data;
-      }
-      // handles response if unseccessful
-      throw new Error('Request failed');
+      const response = await api.get('recipes/informationBulk', {
+        params: {
+          ids: recipeIds,
+          includeNutritions: false,
+        }
+      });
+      const data = response.data;
+      return data;
     } catch (error) {
       console.log(error);
       return null;
@@ -49,31 +57,26 @@ const App = () => {
       return;
     }
     try {
-      // sends request
-      const response = await fetch(`https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY_TWO}&ingredients=${query}`);
-      // handles response if successful
-      if (response.ok) {
-        const data = await response.json();
-        // Code to execute with data
+      const response = await api.get('recipes/findByIngredients', {
+        params: {
+          ingredients: query,
+        }
+      });
+      const { data } = response;
 
-        const recipeIds = data.map(recipe => recipe.id).join();
-        const recipeInfos =  await getRecipeInformationBulk(recipeIds);
-        // const recipeInfos =  await Promise.all(data.map(recipe => getRecipeInformation(recipe.id)));
-        console.log(recipeInfos);
+      const recipeIds = data.map(recipe => recipe.id).join();
+      const recipeInfos =  await getRecipeInformationBulk(recipeIds);
+      console.log(recipeInfos);
 
-        const recipeUrls = {};
-        recipeInfos.forEach(recipeInfo => {
-          recipeUrls[recipeInfo.id] = recipeInfo.sourceUrl;
-        });
+      const recipeUrls = {};
+      recipeInfos.forEach(recipeInfo => {
+        recipeUrls[recipeInfo.id] = recipeInfo.sourceUrl;
+      });
 
-        setRecipeUrls(recipeUrls);
+      setRecipeUrls(recipeUrls);
 
-        setRecipe(data);
-        console.log(data);
-        return;
-      }
-      // handles response if unseccessful
-      throw new Error('Request failed');
+      setRecipe(data);
+      console.log(data);
     } catch (error) {
       console.log(error);
     }
