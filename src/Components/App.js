@@ -25,11 +25,11 @@ const App = () => {
     getRecipes();
   }, [query]);
 
-  const getRecipeInformationBulk = async (recipeId, recipeIds) => {
+  const getRecipeInformationBulk = async (recipeIds) => {
     try {
       // sends request
       // https://api.spoonacular.com/recipes/informationBulk?ids=715538,716429
-      const response = await fetch(`https://api.spoonacular.com/recipes/${recipeId}/informationBulk?apiKey=${API_KEY_TWO}&ids=${recipeIds}&includeNutrition=false`);
+      const response = await fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${API_KEY_TWO}&ids=${recipeIds}&includeNutrition=false`);
       // handles response if successful
       if (response.ok) {
         const data = await response.json();
@@ -57,7 +57,6 @@ const App = () => {
         // Code to execute with data
 
         const recipeIds = data.map(recipe => recipe.id).join();
-
         const recipeInfos =  await getRecipeInformationBulk(recipeIds);
         // const recipeInfos =  await Promise.all(data.map(recipe => getRecipeInformation(recipe.id)));
         console.log(recipeInfos);
@@ -95,7 +94,11 @@ const App = () => {
 
   return(
     <div className="App">
-      <Navbar/>
+      <Navbar
+        getSearch = {getSearch}
+        search = {search}
+        updateSearch = {updateSearch}
+      />
       {recipes.map(recipe => {
         const url = recipeUrls[recipe.id];
         return (<Recipe 
