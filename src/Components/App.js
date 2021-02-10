@@ -20,9 +20,9 @@ const api = axios.create({
   }
 });
 
-const mock = new MockAdapter(api);
-mock.onGet("recipes/findByIngredients").reply(200, findByIngredients);
-mock.onGet("recipes/informationBulk").reply(200, informationBulk);
+// const mock = new MockAdapter(api);
+// mock.onGet("recipes/findByIngredients").reply(200, findByIngredients);
+// mock.onGet("recipes/informationBulk").reply(200, informationBulk);
 
 
 // create App component
