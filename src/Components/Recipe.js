@@ -6,20 +6,19 @@ const Recipe = ({title, image, ingredients, url}) => {
    
     return(
         <div className="cards-container">
-            <div className="cards">
-                <h1>{title}</h1>
+            <div className="recipe-card">
+                <h3 className="recipe-title">{title}</h3>
                 <img src={image} alt=""/>
-                <h5>Ingredients</h5>
-                <ul>
+                <h4 className="ingredients-text">Ingredients</h4>
+                <ul className="ingredients-list">
                 {ingredients.map(ingredient => (
                     <li key={ingredient.original}>{ingredient.original}</li>
                 ))} 
                 </ul>
-                <a href={url}>Go to Recipe</a>        
+                <a href={url} className="recipe-btn">Go to Recipe</a>        
             </div>
         </div>
     )
-
 }
 
 export default Recipe;

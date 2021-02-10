@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: space-between;
     background-color: white;
-    padding: 0 40px;
 }
 
 .logo-side {
@@ -11,7 +10,7 @@
     flex: 50%;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 20px;
+    margin-left: 40px;
 }
 
 .logo-text {
@@ -25,7 +24,7 @@
     flex: 50%;
     justify-content: flex-end;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 40px;
 }
 
 .search-bar {
@@ -57,13 +56,13 @@
 /* smallest device (phones)*/
 @media only screen and (min-width: 100px) and (max-width: 480px) {
     .logo-side {
-        margin-left: 10px;
+        margin-left: 20px;
     }
     .logo-text {
         font-size: 14px;
     }
     .search-form {
-        margin-right: 10px;
+        margin-right: 20px;
     }
     .search-bar {
         width: 125px;
@@ -81,13 +80,13 @@
 /* Small devices (tablets/ portrait mode) */
 @media only screen and (min-width: 480px) and (max-width: 768px) {
     .logo-side {
-        margin-left: 10px;
+        margin-left: 20px;
     }
     .logo-text {
         font-size: 19px;
     }
     .search-form {
-        margin-right: 10px;
+        margin-right: 20px;
     }
     .search-bar {
         width: 150px;
@@ -103,4 +102,11 @@
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .logo-side {
+        margin-left: 30px;
+    }
+    .search-form {
+        margin-right: 30px;
+    }
+}
