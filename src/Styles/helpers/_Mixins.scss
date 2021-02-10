@@ -1,0 +1,26 @@
+@mixin full-height-width {
+    width: 100%;
+    min-height: 100vh;
+}
+
+@mixin grid-normal-device {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 50px;
+}
+
+@mixin navbar-sides {
+    display: flex;
+    flex: 50%;
+    align-items: center;
+}
+
+@mixin align-left {
+    align-self: flex-start;
+}
+
+@mixin basic-btn {
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}

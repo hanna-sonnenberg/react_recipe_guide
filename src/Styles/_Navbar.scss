@@ -1,36 +1,35 @@
+@import './helpers/Variables';
+@import './helpers/Mixins';
+
 .navbar {
-    height: 70px;
+    height: $nav-height;
     display: flex;
     flex-direction: space-between;
     background-color: white;
 }
 
 .logo-side {
-    display: flex;
-    flex: 50%;
+    @include navbar-sides();
     justify-content: flex-start;
-    align-items: center;
-    margin-left: 40px;
+    margin-left: $margin-left;
 }
 
 .logo-text {
-    color: #517FA4;
-    font-family: 'Pacifico', cursive;
+    color: $light-blue;
+    font-family: $logo-font;
     margin: 0;
 }
 
 .search-form {
-    display: flex;
-    flex: 50%;
+    @include navbar-sides();
     justify-content: flex-end;
-    align-items: center;
-    margin-right: 40px;
+    margin-right: $margin-right;
 }
 
 .search-bar {
     width: 220px;
     height: 25px;
-    border: 1px solid #517FA4;
+    border: 1px solid $light-blue;
     border-radius: 5px;
     padding: 5px;
     color: black;
@@ -39,31 +38,31 @@
 }
 
 ::placeholder {
-    color: #517FA4;
+    color: $light-blue;
 }
 
 .search-button {
+    @include basic-btn();
     width: 70px;
     height: 37px;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    background-color: #517FA4;
+    background-color: $light-blue;
     font-size: 16px;    
     padding: 0;
-    cursor: pointer;
 }
 
 /* smallest device (phones)*/
 @media only screen and (min-width: 100px) and (max-width: 480px) {
+    .navbar {
+        height: $nav-height - 20px;
+    }
     .logo-side {
-        margin-left: 20px;
+        margin-left: $margin-left - 20px;
     }
     .logo-text {
         font-size: 14px;
     }
     .search-form {
-        margin-right: 20px;
+        margin-right: $margin-right - 20px;
     }
     .search-bar {
         width: 125px;
@@ -80,14 +79,17 @@
 
 /* Small devices (tablets/ portrait mode) */
 @media only screen and (min-width: 480px) and (max-width: 768px) {
+    .navbar {
+        height: $nav-height - 20px;
+    }
     .logo-side {
-        margin-left: 20px;
+        margin-left: $margin-left - 20px;
     }
     .logo-text {
         font-size: 19px;
     }
     .search-form {
-        margin-right: 20px;
+        margin-right: $margin-right - 20px;
     }
     .search-bar {
         width: 150px;
@@ -105,9 +107,9 @@
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     .logo-side {
-        margin-left: 30px;
+        margin-left: $margin-left - 10px;
     }
     .search-form {
-        margin-right: 30px;
+        margin-right: $margin-right - 10px;
     }
 }

@@ -6,8 +6,8 @@ import Recipe from './Recipe';
 import Navbar from './Navbar';
 import findByIngredients from '../Mocks/findByIngredients';
 import informationBulk from '../Mocks/informationBulk';
-import './App.scss';
-import '../index.scss';
+import '../Styles/_App.scss';
+import '../_index.scss';
 
 const API_KEY = process.env.REACT_APP_SPOONACULAR_API_KEY;
 const API_KEY_TWO = process.env.REACT_APP_SPOONACULAR_2_API_KEY;

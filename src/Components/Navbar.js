@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './App';
-import './App';
-import './Navbar.scss';
+import '../Styles/_App.scss';
+import '../Styles/_Navbar.scss';
 
 const Navbar = ({getSearch, search, updateSearch}) => {
     return(
