@@ -51,6 +51,7 @@
     background-color: #517FA4;
     font-size: 16px;    
     padding: 0;
+    cursor: pointer;
 }
 
 /* smallest device (phones)*/

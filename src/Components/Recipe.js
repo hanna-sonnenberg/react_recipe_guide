@@ -15,10 +15,11 @@ const Recipe = ({title, image, ingredients, url}) => {
                     <li key={ingredient.original}>{ingredient.original}</li>
                 ))} 
                 </ul>
-                <a href={url} className="recipe-btn">Go to Recipe</a>        
+                <a href={url} className="recipe-btn" target="_blank">Go to Recipe</a>        
             </div>
         </div>
     )
 }
 
 export default Recipe;
+
