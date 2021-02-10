@@ -1,5 +1,5 @@
 import React from 'react';
-import './Recipe.css';
+import './Recipe.scss';
 
 // component Recipe takes the props
 const Recipe = ({title, image, ingredients, url}) => {
