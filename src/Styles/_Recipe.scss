@@ -1,0 +1,48 @@
+@import './helpers/Variables';
+@import './helpers/Mixins';
+
+.recipe-card {
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    padding: 15px;
+    height: 450px;
+
+    img {
+        width: 250px;
+        margin: 10px 0;
+    }
+}
+
+.recipe-title {
+    color: $dark-blue;
+    font-family: $logo-font;
+    text-align: center;
+
+    margin: 0;
+}
+
+.ingredients-text {
+    @include align-left();
+    margin: 0;
+    text-decoration: underline;
+}
+
+.ingredients-list {
+    @include align-left();
+    list-style: none;
+    padding: 0;
+}
+
+.recipe-btn {
+    @include basic-btn();
+    text-decoration: none;
+    background-color: $dark-blue;
+    padding: 7px;
+}
