@@ -48,6 +48,7 @@
     background-color: #243949;
     padding: 7px;
     align-self: center;
+    cursor: pointer;
 }
 
 /* smallest device (phones)*/
